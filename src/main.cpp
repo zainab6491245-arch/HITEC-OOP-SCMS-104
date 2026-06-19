@@ -4,6 +4,9 @@
 #include "person/gradstudent.h"
 #include "person/faculty.h"
 #include "person/staff.h"
+#include "course/course.h"
+#include "course/enrollment.h"
+#include "utils/exception.h"
 #include <string>
 using namespace std;
 
@@ -27,5 +30,51 @@ int main()
 	delete p2;
 	delete p3;
 	delete p4;
-	return 0;
-}erar
+cout << "===== Module 2 : Course and Enrollment =====" << endl << endl;
+Faculty* facultyforcourse = new Faculty("Dr. Veena", "55555-5555555-5", 45, "0300-5555555", 303, 50000, "Computer Science", "Professor");
+Course* course1 = new Course("CS_104L", "Object_Oriented Programming", 3, facultyforcourse, 2);
+string courseArr[] = { "CS_104L" };
+Student* s1 = new Student("Zainab_Amir", "11111-1111111-1", 19, "0300-7654432", 104, 4.0, 5, courseArr, 1);
+Student* s2 = new  Student("Laiba_Javed", "22222-2222222-2", 20, "0300-1234567", 105, 3.5, 4, courseArr, 1);
+Student* s3 = new Student("Fatima_Batool", "33333-3333333-3", 21, "0300-9876543", 106, 3.8, 4, courseArr, 1);
+try // try ki bracket mein risky code(error code) rakha jata hai,agar koi throw chal gai to code crash nai hota
+//agar try ki bracket mein koi error aata hai to catch ki bracket mein usko handle kiya jata hai
+{
+	course1->enroll(s1);
+	cout << "Student 1 enrolled successfully in course " << endl;
+	course1->enroll(s2);
+	cout << "Student 2 enrolled successfully in course " << endl;
+	course1->enroll(s3); // This should throw an exception
+	cout << "Student 3 enrolled successfully in course " << endl;
+}
+catch (const CapacityExceededException& e) //ye specific exception ko pakar leta hai
+{
+	cout << e.what() << endl;// ye line exception ka message print karega
+}//bina try-catch ke agar exception throw hota to program crash ho jata
+cout << endl;
+course1->displayInfo();
+cout << "Enrolled Students: " << endl;
+Enrollment* enrollment1 = new Enrollment(course1, s1, "2024-01-15", 3.8);
+enrollment1->displayInfo();
+cout << endl;
+cout << "===== Operator Overloading Demonstration =====" << endl;//Overloading the '==' operator to compare two courses based on their course code
+cout << "===== Comparing Courses =====" << endl;
+Course* course2 = new Course("CS_104L", "Object_Oriented Programming", 3, facultyforcourse, 2);
+if (*course1 == *course2)
+{
+	cout << "Courses are the same based on course code." << endl;
+}
+else
+{
+	cout << "Courses are different based on course code." << endl;
+}
+cout << *course1 << endl;//Overloading the '<<' operator to display course information
+delete facultyforcourse;// Used for memory cleanup
+delete course1;
+delete course2;
+delete s1;
+delete s2;
+delete s3;
+delete enrollment1;
+return 0;
+}
