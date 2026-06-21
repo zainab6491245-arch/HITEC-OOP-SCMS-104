@@ -1,7 +1,7 @@
 #ifndef REPORTS_H
 #define REPORTS_H
 
-#include "../person/Student.h"
+#include "../person/student.h"
 #include <string>
 #include <iostream>
 #include <algorithm>//std::sort + std ::find  yahan sa ata ha

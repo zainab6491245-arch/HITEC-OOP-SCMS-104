@@ -1,5 +1,5 @@
 
-#include "Course.h"
+#include "course.h"
 #include "../person/Faculty.h"
 #include "../person/Student.h"
 #include "../utils/exception.h"

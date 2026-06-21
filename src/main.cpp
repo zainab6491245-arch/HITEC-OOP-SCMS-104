@@ -7,7 +7,7 @@
 #include "course/course.h"
 #include "course/enrollment.h"
 #include "utils/exception.h"
-#include "library/libraryItem.h"
+#include "library/libraryitem.h"
 #include "library/book.h"
 #include "library/journal.h"
 #include "library/library.h"
