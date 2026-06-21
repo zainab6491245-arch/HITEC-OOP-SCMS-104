@@ -8,6 +8,6 @@ jobs:
       - name: Install g++
         run: g++ --version
       - name: Compile
-        run: g++ -std=c++17 -Wall src/**/*.cpp src/main.cpp -o scms
+        run: g++ -std=c++17 -Wall -I src src/**/*.cpp src/main.cpp -o scms
       - name: Smoke Test
         run: echo 'Build successful'
