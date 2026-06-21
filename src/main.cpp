@@ -13,6 +13,7 @@
 #include "library/library.h"
 #include "finance/feerecord.h"
 #include"finance/invoice.h"
+#include "hostel/hostelmanager.h"
 #include <string>
 using namespace std;
 
@@ -160,5 +161,30 @@ int main()
 	Invoice invoice3 = invoice1;   // copy constructor chalega
 	cout << "Total Invoices Created: " << Invoice::getInvoiceCounter() << endl;
 
+	cout << endl << "===== Module 5: Hostel Management =====" << endl << endl;
+
+	HostelManager* manager = new HostelManager("Block-A");
+
+	cout << "===== Allocating Rooms (Accommodation Interface) =====" << endl;
+	manager->allocateRoom();
+	manager->allocateRoom();
+	cout << endl;
+
+	cout << "===== Vacating a Room (Accommodation Interface) =====" << endl;
+	manager->vacateRoom();
+	cout << endl;
+
+	cout << "===== Generating Report (Reportable Interface) =====" << endl;
+	manager->generateReport();
+	cout << endl;
+
+	cout << "===== Multiple Inheritance Demonstration =====" << endl;
+	Accomodation* accPtr = manager;     // HostelManager ko Accommodation* se point kar rahe hain,because of inheritance
+	accPtr->allocateRoom();
+
+	Reportable* repPtr = manager;        // HostelManager ko Reportable* se point kar rahe hain
+	repPtr->generateReport();//due to multiple inheritance one object can play different role
+
+	delete manager;
 	return 0;
 }
