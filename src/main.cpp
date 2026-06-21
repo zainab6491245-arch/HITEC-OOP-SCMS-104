@@ -14,6 +14,7 @@
 #include "finance/feerecord.h"
 #include"finance/invoice.h"
 #include "hostel/hostelmanager.h"
+#include "utils/reports.h"
 #include <string>
 using namespace std;
 
@@ -186,5 +187,44 @@ int main()
 	repPtr->generateReport();//due to multiple inheritance one object can play different role
 
 	delete manager;
+
+	cout << endl << "===== Module 6: Reporting & Utilities =====" << endl << endl;
+
+	// Pehle ek array banate hain Student pointers ka ,ya yahan naye bana lete hain demonstration ke liye
+	string demoCourses[] = { "OOP_104" };
+
+	Student* st1 = new Student("Zanii", "11111-1111111-1", 19, "0300-1111111", 201, 3.2, 3, demoCourses, 1);
+	Student* st2 = new Student("Sara", "22222-2222222-2", 20, "0300-2222222", 202, 3.9, 4, demoCourses, 1);
+	Student* st3 = new Student("Laiba", "33333-3333333-3", 21, "0300-3333333", 203, 3.5, 5, demoCourses, 1);
+
+	Student* studentList[3] = { st1, st2, st3 };
+
+	cout << "===== Before Sorting (by GPA) =====" << endl;
+	displayStudents(studentList, 3);
+
+	cout << "===== After Sorting (by GPA - Highest First) =====" << endl;
+	sortStudentsByGPA(studentList, 3);
+	displayStudents(studentList, 3);
+
+	cout << "===== Searching for Roll No 202 =====" << endl;
+	Student* found = findStudentByRollNo(studentList, 3, 202);//find specific roll number
+	if (found != nullptr)
+	{
+		cout << "Found: ";
+		found->displayInfo();
+	}
+	else
+	{
+		cout << "Student not found." << endl;
+	}
+	cout << endl;
+
+	cout << "===== Consolidated Campus Report =====" << endl;
+	generateCampusReport(studentList, 3, 2, 70500.0, 1);// it can take data from previous modules
+	cout << endl;
+
+	delete st1;
+	delete st2;
+	delete st3;
 	return 0;
 }
