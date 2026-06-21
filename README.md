@@ -56,7 +56,7 @@ g++ -std=c++17 src/main.cpp src/person/*.cpp src/course/*.cpp src/library/*.cpp 
 ![Class Diagram](docs/class_diagram.png)
 
 ## GitHub Repository
-https://github.com/zainab6491245-arch/[HITEC-OOP-SCMS-104]
+https://github.com/zainab6491245-arch/HITEC-OOP-SCMS-104
 
 
 
