@@ -1,0 +1,6 @@
+101,Zainab Amir,20,4,3.80
+102,Laiba Javed,21,4,3.50
+103,Fatima Batool,21,4,3.80
+104,Ali Hassan,22,6,3.65
+105,Sara Khan,20,3,3.90
+106,Ahmed Raza,23,7,3.20
