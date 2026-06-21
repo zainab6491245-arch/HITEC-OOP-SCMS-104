@@ -1,7 +1,7 @@
 
 #include "course.h"
-#include "../person/Faculty.h"
-#include "../person/Student.h"
+#include "../person/faculty.h"
+#include "../person/student.h"
 #include "../utils/exception.h"
 
  // Course banate waqt shuru ki values set karo
