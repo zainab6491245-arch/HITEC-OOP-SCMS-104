@@ -11,6 +11,8 @@
 #include "library/book.h"
 #include "library/journal.h"
 #include "library/library.h"
+#include "finance/feerecord.h"
+#include"finance/invoice.h"
 #include <string>
 using namespace std;
 
@@ -120,6 +122,43 @@ int main()
 	{
 		cout << e.what() << endl;
 	}
+	cout << endl << "===== Module 4: Fee & Finance Management =====" << endl << endl;
+
+	FeeRecord fee1("Zainab-104", 50000, 20000, 500);
+	fee1.displayInfo();
+	cout << endl;
+
+	cout << "===== Recording a Payment (operator-=) =====" << endl;
+	fee1 -= 30000;
+	fee1.displayInfo();
+	cout << endl;
+
+	cout << "===== Copy Constructor Demonstration =====" << endl;
+	FeeRecord fee2 = fee1;
+	fee2.displayInfo();
+	cout << endl;
+
+	cout << "===== Copy Assignment Demonstration =====" << endl;
+	FeeRecord fee3("Laiba-028", 45000, 18000, 0);
+	fee3 = fee1;
+	fee3.displayInfo();
+	cout << endl;
+
+	cout << "===== Static Member Demonstration (Invoice) =====" << endl;
+	string items1[] = { "Semester Fee", "Hostel Fee" };
+	Invoice invoice1("2024-01-15", items1, 2, 70000);
+	invoice1.displayInfo();
+	cout << "Total Invoices Created: " << Invoice::getInvoiceCounter() << endl;
+	cout << endl;
+
+	string items2[] = { "Library Fine" };
+	Invoice invoice2("2024-02-10", items2, 1, 500);
+	invoice2.displayInfo();
+	cout << "Total Invoices Created: " << Invoice::getInvoiceCounter() << endl;
+	cout << endl;
+
+	Invoice invoice3 = invoice1;   // copy constructor chalega
+	cout << "Total Invoices Created: " << Invoice::getInvoiceCounter() << endl;
 
 	return 0;
 }
